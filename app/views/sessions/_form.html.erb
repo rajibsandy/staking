@@ -1,0 +1,16 @@
+<%= form_with(scope: :session, url: login_path) do |form| %>
+
+  <div class="field form-group mb-1">
+    <%= form.label :email %>
+    <%= form.email_field :email, :class => "form-control" %>
+  </div>
+
+  <div class="field form-group mb-1">
+    <%= form.label :password %>
+    <%= form.password_field :password, :class => "form-control" %>
+  </div>
+
+  <div class="actions mb-2">
+    <%= form.submit "Login up", :class => "form-control btn btn-primary" %>
+  </div>
+<% end %>

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     def create
     @user = User.new(user_params)
         if @user.save
-            flash[:notice] = "Welcome to this test application #{@user.name} you have successfully signed up!"
+            flash[:notice] = "Welcome to Bitcoin Hedge Staking #{@user.name}! You have successfully signed up!"
             redirect_to root_path
         else
             render 'new'
