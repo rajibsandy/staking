@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_115208) do
+ActiveRecord::Schema.define(version: 2021_11_22_192548) do
+
+  create_table "stakes", force: :cascade do |t|
+    t.integer "user_id"
+    t.float "amount"
+    t.float "at_rate"
+    t.float "usd"
+    t.integer "status"
+    t.integer "withdrawal"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

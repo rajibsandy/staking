@@ -12,12 +12,13 @@
       <div class="collapse navbar-collapse" id="navbarsExample04">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            
             <%= link_to 'Home', root_path, :class=>'nav-link'%>
           </li>
         <% if logged_in? %>
           <li class="nav-item">
-            <%= link_to 'Logout', logout_path, :class=>'nav-link'%>
+            <%= link_to 'Stake', stake_path, :class=>'nav-link'%>
+          </li>
+            </ul>
           </li>
         <% else %>
           <li class="nav-item">
@@ -27,17 +28,17 @@
             <%= link_to 'Login', login_path, :class=>'nav-link'%>
           </li>
         <% end %>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-          </li>
+        </ul>
+        <ul class="navbar-nav mb-2 mb-md-0 pull-right justify-contain-right">
+          <% if logged_in? %>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i> <%= current_user.name %></a>
             <ul class="dropdown-menu" aria-labelledby="dropdown04">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li class="nav-item">
+            <%= link_to 'Logout', logout_path, :class=>'dropdown-item text-danger'%>
           </li>
+          <% end %>
         </ul>
       </div>
     </div>

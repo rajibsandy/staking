@@ -1,0 +1,22 @@
+<%= form_with(model: stake) do |form| %>
+  <% if stake.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this in:</h2>
+
+      <ul>
+        <% stake.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group mb-1">
+    <%= form.label :amount %>
+    <%= form.number_field :amount, :min => 1 , :value => 1,:class => "form-control" %>
+  </div>
+
+  <div class="actions mb-2">
+    <%= form.submit "Stake", :class => "form-control btn btn-primary" %>
+  </div>
+<% end %>

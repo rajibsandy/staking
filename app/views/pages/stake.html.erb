@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <h1 class="card-title">BITCOIN HEDGE STAKING</h1>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">STAKE NOW</h5>
+                        <p>Balance: 258.00000000 <small><b>(BTCHG)</b></small><p>
+                        <%= render 'stakes/form', stake: @stake %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">List of stakes</h5>
+                        <div class="table-responsive-md">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                    <th>(BTCHG)</th>
+                                    <th>@Rate</th>
+                                    <th>(USD)</th>
+                                    <th>Withdrawals</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                    <th>Updated</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <% @stakes.each do |stake| %>
+                                    <tr>
+                                        <td><%= stake.amount%></td>
+                                        <td><%= stake.at_rate %></td>
+                                        <td><%= stake.usd %></td>
+                                        <td><%= stake.withdrawal %></td>
+                                        <% if stake.status == 1 %>
+                                        <td>Active</td>
+                                        <% elsif stake.status == 2 %>
+                                        <td><%= link_to 'click to release', release %></td>
+                                        <% else %>
+                                        <td>Released</td>
+                                        <% end %>
+                                        <td><small><%= time_ago_in_words(stake.created_at) %> ago</small></td>
+                                        <td><small><%= time_ago_in_words(stake.updated_at) %> ago </small></td>
+                                    </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="apple_pagination">
+                            <%= will_paginate @stakes, :container => false %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>

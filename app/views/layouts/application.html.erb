@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://kit.fontawesome.com/76e9644c05.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -16,20 +17,26 @@
 
   <body>
     <%= render 'shared/nav'%>
-    <% if notice %>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <strong><%= notice %></strong>     
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </button>
+    
+
+    <div class="contianer-fluid">
+      <div class="container">
+          <% if notice %>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong><%= notice %></strong>     
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </button>
+          </div>
+          <% end %>
+          <% if alert %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong><%= alert %></strong>     
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </button>
+          </div>
+          <% end %>
+      </div>  
     </div>
-    <% end %>
-    <% if alert %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong><%= alert %></strong>     
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </button>
-    </div>
-    <% end %>
     <%= yield %>
     <%= render 'shared/footer'%>
   </body>
