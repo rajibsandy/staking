@@ -1,0 +1,104 @@
+<div class="container-fluid">
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <h1 class="card-title">STAKE WITHDRAWAL</h1>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">STAKE DETAILS</h5>
+                        <p>
+                          <table class="table table-striped table-hover">
+                              <tr>
+                                <th>(BTCHG)</th>
+                                <td><%= @stake.amount %></td>
+                              </tr>
+                              <tr>
+                                <th>@Rate</th>
+                                <td><%= @stake.at_rate %></td>
+                              </tr>
+                              <tr>
+                                <th>(USD)</th>
+                                <td><%= @stake.usd %></td>
+                              </tr>
+                              <tr>
+                                <th>Withdrawals</th>
+                                <td><%= @stake.withdrawal %></td>
+                              </tr>
+                              <tr>
+                                <th>Created @</th>
+                                <td><%= @stake.created_at.strftime("%m/%d/%Y") %></td>
+                              </tr>
+                              <tr>
+                                <th>Updated @</th>
+                                <td><%= @stake.updated_at.strftime("%m/%d/%Y") %></td>
+                              </tr>
+                              <tr>
+                                <th>Status</th>
+                                <%if @stake.status == 1 %>
+                                  <td>Active</td>
+                                <% elsif @stake.status == 2 %>
+                                  Ready to Release
+                                <% else %>
+                                  Released
+                                <% end %>
+                              </tr>
+
+                          </table>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">List of stake withdrawal</h5>
+                        <div class="table-responsive-md">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                      <th>Type</th>
+                                      <th>(BTCHG)</th>
+                                      <th>(USD) 5% </th>
+                                      <th>Status</th>
+                                      <th>Created</th>
+                                      <th>Updated</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <% @stakewithdrawals.each do |stakewithdrawal| %>
+                                    <tr>
+                                        <% if stakewithdrawal.monthly %>
+                                        <td>Monthly</td>
+                                        <% else %>
+                                        <td>Stake Released</td>
+                                        <% end %>
+                                        <td><%= stakewithdrawal.amount %></td>
+                                        <td><%= stakewithdrawal.usd %></td>
+                                        <% if stakewithdrawal.status == 0 %>
+                                        <td><%= link_to 'click to release'%></td>
+                                        <% else stakewithdrawal.status == 1 %>
+                                        <td>Released</td>
+                                        <% end %>
+                                        <td><small><%= stakewithdrawal.created_at.strftime("%m/%d/%Y") %> </small></td>
+                                        <td><small><%= stakewithdrawal.updated_at.strftime("%m/%d/%Y") %> </small></td>
+                                    </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="apple_pagination">
+                            <%= will_paginate @stakewithdrawals, :container => false %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
