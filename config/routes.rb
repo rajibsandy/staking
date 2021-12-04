@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   #---------------------Pages----------------------------
   root "pages#home"
   get 'stake', to: "pages#stake"
@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   #-----------------StakeActions-------------------------
   post "stakes", to: "stakes#create"
   post "release", to: "stakes#release"
+  get 'stake/:id', to: "pages#stakewithdrawal"
 
 end

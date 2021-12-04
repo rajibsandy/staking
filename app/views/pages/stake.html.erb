@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">STAKE NOW</h5>
-                        <p>Balance: 258.00000000 <small><b>(BTCHG)</b></small><p>
+                        <p>Balance: <%= stake_balance %> <small><b>(BTCHG)</b></small><p>
                         <%= render 'stakes/form', stake: @stake %>
                     </div>
                 </div>
@@ -20,6 +20,7 @@
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
+                                    <th>Link</th>
                                     <th>(BTCHG)</th>
                                     <th>@Rate</th>
                                     <th>(USD)</th>
@@ -33,6 +34,7 @@
                                 <tbody>
                                     <% @stakes.each do |stake| %>
                                     <tr>
+                                      <td><%= link_to "Check", controller: "pages", action: "stakewithdrawal", id: stake %></td>
                                         <td><%= stake.amount%></td>
                                         <td><%= stake.at_rate %></td>
                                         <td><%= stake.usd %></td>
@@ -44,8 +46,8 @@
                                         <% else %>
                                         <td>Released</td>
                                         <% end %>
-                                        <td><small><%= time_ago_in_words(stake.created_at) %> ago</small></td>
-                                        <td><small><%= time_ago_in_words(stake.updated_at) %> ago </small></td>
+                                        <td><small><%= stake.created_at.strftime("%m/%d/%Y") %> </small></td>
+                                        <td><small><%= stake.updated_at.strftime("%m/%d/%Y") %> </small></td>
                                     </tr>
                                     <% end %>
                                 </tbody>

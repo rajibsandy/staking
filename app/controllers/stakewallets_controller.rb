@@ -1,0 +1,3 @@
+class StakewalletsController < ApplicationController
+
+end

@@ -1,5 +1,6 @@
 class Stake < ApplicationRecord
     belongs_to :user
+    has_many :stakewithdrawal
     validates :amount, presence: true, length: { minimum: 1}
     validates :at_rate, presence: true
     validates :usd, presence: true

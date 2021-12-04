@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_22_192548) do
+ActiveRecord::Schema.define(version: 2021_11_25_111158) do
 
   create_table "stakes", force: :cascade do |t|
     t.integer "user_id"
@@ -19,6 +19,26 @@ ActiveRecord::Schema.define(version: 2021_11_22_192548) do
     t.float "usd"
     t.integer "status"
     t.integer "withdrawal"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stakewallets", force: :cascade do |t|
+    t.integer "user_id"
+    t.float "credit"
+    t.float "debit"
+    t.string "detail"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stakewithdrawals", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "stake_id"
+    t.boolean "monthly"
+    t.float "amount"
+    t.float "usd"
+    t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
