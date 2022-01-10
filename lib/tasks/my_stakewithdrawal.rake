@@ -13,8 +13,8 @@ namespace :my_stakewithdrawal do
           amount = calusd / 125
           @stakewithdrawal = Stakewithdrawal.new(:user_id => stake.user_id, :stake_id => stake.id, :monthly => true,:amount => amount,:usd => calusd,:status => 1)
             if @stakewithdrawal.save
-                @stakewallet = Stakewallet.new(:user_id => stake.user_id, :credit => amount, :debit => 0.0, :detail => "Staking_Withdrawal_Monthly")
-                @stakewallet.save
+                @btchgwallet = Btchgwallet.new(:user_id => stake.user_id, :credit => amount, :debit => 0.0, :detail => "Staking_Withdrawal_Monthly")
+                @btchgwallet.save
                 withdrawalcount = stake.withdrawal.to_i + 1
                 stake.update(withdrawal: withdrawalcount)
             end
@@ -25,13 +25,13 @@ namespace :my_stakewithdrawal do
             if @stakewithdrawal.save
                 @stakewithdrawalr = Stakewithdrawal.new(:user_id => stake.user_id, :stake_id => stake.id, :monthly => false,:amount => amount,:usd => calusd,:status => 1)
                 @stakewithdrawalr.save
-                @stakewallet = Stakewallet.new(:user_id => stake.user_id, :credit => amount, :debit => 0.0, :detail => "Staking_Withdrawal_Monthly")
-                @stakewallet.save
+                @btchgwallet = Btchgwallet.new(:user_id => stake.user_id, :credit => amount, :debit => 0.0, :detail => "Staking_Withdrawal_Monthly")
+                @btchgwallet.save
                 withdrawalcount = stake.withdrawal.to_i + 1
                 stake.update(withdrawal: withdrawalcount)
                 stake.update(status: 3)
-                @stakewallet = Stakewallet.new(:user_id => stake.user_id, :credit => stake.amount, :debit => 0.0, :detail => "Staking_Realesed")
-                @stakewallet.save
+                @btchgwallet = Btchgwallet.new(:user_id => stake.user_id, :credit => stake.amount, :debit => 0.0, :detail => "Staking_Realesed")
+                @btchgwallet.save
             end
           end
         end

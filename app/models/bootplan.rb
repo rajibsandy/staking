@@ -1,0 +1,3 @@
+class Bootplan < ApplicationRecord
+  
+end

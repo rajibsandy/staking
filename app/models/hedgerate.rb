@@ -1,0 +1,3 @@
+class Hedgerate < ApplicationRecord
+  
+end

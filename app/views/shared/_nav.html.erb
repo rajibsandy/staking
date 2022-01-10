@@ -1,7 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-success" aria-label="Fourth navbar example">
     <div class="container-fluid">
-     
-
       <a class="navbar-brand" href="#">
         <%= image_tag "logotext.png", height: 45 %>
       </a>
@@ -11,14 +9,27 @@
 
       <div class="collapse navbar-collapse" id="navbarsExample04">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <%= link_to 'Home', root_path, :class=>'nav-link'%>
-          </li>
         <% if logged_in? %>
           <li class="nav-item">
-            <%= link_to 'Stake', stake_path, :class=>'nav-link'%>
+            <%= link_to 'Zero Loss Trading', trades_path, :class=>'nav-link'%>
           </li>
-            </ul>
+          <li class="nav-item">
+            <%= link_to 'Stakes', stakes_path, :class=>'nav-link'%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Bot Trading', boots_path, :class=>'nav-link'%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Swap', swaps_path, :class=>'nav-link'%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'P2P', ptops_path, :class=>'nav-link'%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Referrals', referrals_path, :class=>'nav-link'%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Wallets', wallets_path, :class=>'nav-link'%>
           </li>
         <% else %>
           <li class="nav-item">
@@ -34,7 +45,9 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i> <%= current_user.name %></a>
             <ul class="dropdown-menu" aria-labelledby="dropdown04">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li>
+                <%= link_to 'Profile', profile_path, :class=>'dropdown-item'%>
+              </li>
               <li class="nav-item">
             <%= link_to 'Logout', logout_path, :class=>'dropdown-item text-danger'%>
           </li>

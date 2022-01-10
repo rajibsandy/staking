@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use sqlite3 as the database for Active Record
@@ -23,11 +22,18 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 # pagination gem
 gem 'will_paginate', '~> 3.3'
+gem 'pagy'
 # Task Sheduler
 gem 'whenever'
+gem 'twilio-ruby'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem 'cloudinary'
+gem 'rack-cors'
+#Json
+gem 'httparty'
+gem 'fast_jsonapi'
+gem 'json'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
