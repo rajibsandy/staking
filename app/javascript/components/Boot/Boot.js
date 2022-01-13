@@ -117,7 +117,7 @@ const Boot = (props) => {
       userusdbalance() // Fetch Data for the new page
       loadbootdek();
       Swal.fire({
-        title: 'Bot Started successfully!',
+        title: 'Bot off successfully!',
         icon: 'success',
         confirmButtonText: 'Ok'
       });

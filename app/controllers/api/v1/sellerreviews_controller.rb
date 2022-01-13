@@ -2,7 +2,6 @@ module Api
   module V1
     class SellerreviewsController < ApplicationController
       def create
-        byebug
         user = current_user
         buyerrequest = user.buyer_requests.last
         sellerrequest = buyerrequest.seller_request
